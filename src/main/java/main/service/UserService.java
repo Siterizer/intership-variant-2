@@ -8,10 +8,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class UserService {
-    public static List<User> loadUsers(){
+    public static List<User> loadUsers(String url){
         RestTemplate restTemplate = new RestTemplate();
-        String string = restTemplate.getForObject(
-                "https://jsonplaceholder.typicode.com/users", String.class);
+        String string = restTemplate.getForObject(url, String.class);
         Gson gson = new Gson();
         User[] usersArray = gson.fromJson(string, User[].class);
         return Arrays.asList(usersArray);

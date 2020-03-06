@@ -5,11 +5,11 @@ import main.entites.user.User;
 
 import java.util.List;
 
-public class DivideAndConquerAlgorithm {
+public class FindTheClosestUserAlgorithm {
 
     private List<User> users;
 
-    public DivideAndConquerAlgorithm(List<User> users){
+    public FindTheClosestUserAlgorithm(List<User> users){
         this.users = users;
     }
     public User findTheClosest(User user){
