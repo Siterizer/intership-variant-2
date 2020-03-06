@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class PostService {
-    public static List<Post> loadPosts(String url){
+    public static List<Post> loadPostsFrom(String url){
         RestTemplate restTemplate = new RestTemplate();
         String string = restTemplate.getForObject(url, String.class);
         Gson gson = new Gson();

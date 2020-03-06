@@ -1,4 +1,4 @@
-package main;
+package main.service;
 
 import main.entites.post.Post;
 import main.entites.user.User;
@@ -14,14 +14,23 @@ public class UserAndPost {
     private List<User> users;
     private List<Post> posts;
 
+    // Constructors are the solution to the first task //
+    //" pobierze dane o postach z https://jsonplaceholder.typicode.com/posts i połączy je z danymi o
+    //userach https://jsonplaceholder.typicode.com/users"
+
     public UserAndPost(String userURL, String postURL){
-        this.users = UserService.loadUsers(userURL);
-        this.posts = PostService.loadPosts(postURL);
+        this.users = UserService.loadUsersFrom(userURL);
+        this.posts = PostService.loadPostsFrom(postURL);
     }
+
     public UserAndPost(){
-        this.users = UserService.loadUsers("https://jsonplaceholder.typicode.com/users");
-        this.posts = PostService.loadPosts("https://jsonplaceholder.typicode.com/posts");
+        this.users = UserService.loadUsersFrom("https://jsonplaceholder.typicode.com/users");
+        this.posts = PostService.loadPostsFrom("https://jsonplaceholder.typicode.com/posts");
     }
+
+    // Second task:
+    // "policzy ile postów napisali userzy i zwróci listę
+    // stringów w postaci “user_name napisał(a) count postów"
     public String countUserPosts(){
         String result = "";
         for(User user: users){
@@ -35,8 +44,10 @@ public class UserAndPost {
         }
         return result;
     }
+    // Third task:
+    // "sprawdzi czy tytuły postów są unikalne i zwróci listę tytułów które nie są."
     public String returnDuplicatePostTitles(){
-        Set<String> foundDuplicateTitles = new HashSet<String>();
+        Set<String> foundDuplicateTitles = new HashSet<>();
         String result = "";
         for (Post post : posts) {
             String title = post.getTitle();
@@ -47,6 +58,9 @@ public class UserAndPost {
         }
         return result;
     }
+
+    //Fourth task:
+    // "dla każdego użytkownika znajdzie innego użytkownika, który mieszka najbliżej niego"
     public String  findTheClosestUserForAllUsers(){
         String result = "";
         FindTheClosestUserAlgorithm findTheClosestUserAlgorithm = new FindTheClosestUserAlgorithm(users);
