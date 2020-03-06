@@ -5,10 +5,10 @@ public class User {
     private String name;
     private String username;
     private String email;
-    public Address address;
+    private Address address;
     private String phone;
     private String website;
-    public Company company;
+    private Company company;
 
     // GETTERS & SETTERS //
     public Long getId() {
@@ -73,6 +73,20 @@ public class User {
 
     public void setCompany(Company company) {
         this.company = company;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", address=" + address +
+                ", phone='" + phone + '\'' +
+                ", website='" + website + '\'' +
+                ", company=" + company +
+                '}';
     }
     // GETTERS & SETTERS //
 }
