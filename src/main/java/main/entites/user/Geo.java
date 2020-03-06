@@ -1,4 +1,4 @@
-package main.entites;
+package main.entites.user;
 
 public class Geo {
     private String lat;
@@ -21,6 +21,7 @@ public class Geo {
     public void setLng(String lng) {
         this.lng = lng;
     }
+    // GETTERS & SETTERS //
 
     @Override
     public String toString() {
@@ -29,5 +30,4 @@ public class Geo {
                 ", lng='" + lng + '\'' +
                 '}';
     }
-    // GETTERS & SETTERS //
 }

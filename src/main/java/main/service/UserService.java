@@ -1,7 +1,7 @@
 package main.service;
 
 import com.google.gson.Gson;
-import main.entites.User;
+import main.entites.user.User;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;

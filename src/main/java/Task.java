@@ -1,4 +1,4 @@
-import main.entites.User;
+import main.entites.user.User;
 import main.service.UserService;
 
 import java.util.List;

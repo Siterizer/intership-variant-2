@@ -1,4 +1,4 @@
-package main.entites;
+package main.entites.user;
 
 public class User {
     private Long id;
@@ -74,6 +74,7 @@ public class User {
     public void setCompany(Company company) {
         this.company = company;
     }
+    // GETTERS & SETTERS //
 
     @Override
     public String toString() {
@@ -88,5 +89,4 @@ public class User {
                 ", company=" + company +
                 '}';
     }
-    // GETTERS & SETTERS //
 }

@@ -1,4 +1,4 @@
-package main.entites;
+package main.entites.user;
 
 public class Company {
     public String name;
@@ -30,6 +30,7 @@ public class Company {
     public void setBs(String bs) {
         this.bs = bs;
     }
+    // GETTERS & SETTERS //
 
     @Override
     public String toString() {
@@ -39,5 +40,4 @@ public class Company {
                 ", bs='" + bs + '\'' +
                 '}';
     }
-    // GETTERS & SETTERS //
 }

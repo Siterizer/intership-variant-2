@@ -1,4 +1,4 @@
-package main.entites;
+package main.entites.user;
 
 public class Address {
 
@@ -48,6 +48,7 @@ public class Address {
     public void setGeo(Geo geo) {
         this.geo = geo;
     }
+    // GETTERS & SETTERS //
 
     @Override
     public String toString() {
@@ -59,5 +60,4 @@ public class Address {
                 ", geo=" + geo +
                 '}';
     }
-    // GETTERS & SETTERS //
 }
