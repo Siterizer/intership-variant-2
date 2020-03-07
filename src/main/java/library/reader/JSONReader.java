@@ -1,8 +1,8 @@
 package library.reader;
 
 import com.google.gson.Gson;
-import library.entitis.post.Post;
-import library.entitis.user.User;
+import library.entities.post.Post;
+import library.entities.user.User;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;

@@ -1,9 +1,9 @@
 package library;
 
-import library.entitis.post.Post;
+import library.entities.post.Post;
 import library.reader.JSONReader;
-import library.entitis.user.Geo;
-import library.entitis.user.User;
+import library.entities.user.Geo;
+import library.entities.user.User;
 
 import java.util.HashSet;
 import java.util.List;
@@ -41,7 +41,7 @@ public class UserAndPost {
                     count ++;
                 }
             }
-            result = result.concat(user.getName() + "napisał(a) " + count + " postów" + "\n");
+            result = result.concat(user.getName() + " napisał(a) " + count + " postów" + "\n");
         }
         return result;
     }
@@ -92,7 +92,7 @@ public class UserAndPost {
                 Double.parseDouble(geo1.getLng()) - Double.parseDouble(geo2.getLng()));
     }
 
-    // GETTERS //
+    // GETTERS  & SETTERS//
     public List<User> getUsers() {
         return users;
     }
@@ -100,5 +100,13 @@ public class UserAndPost {
     public List<Post> getPosts() {
         return posts;
     }
-    // GETTERS //
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+    // GETTERS  & SETTERS//
 }

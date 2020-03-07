@@ -1,7 +1,7 @@
 package library.reader;
 
-import library.entitis.post.Post;
-import library.entitis.user.User;
+import library.entities.post.Post;
+import library.entities.user.User;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -17,7 +17,7 @@ public class JSONReaderTest {
     private  static List<Post> posts;
 
     @BeforeClass
-    public static void readUsersFrom() {
+    public static void readEntities() {
         JSONReader reader = new JSONReader();
         users = reader.readUsersFrom("https://jsonplaceholder.typicode.com/users");
         posts = reader.readPostsFrom("https://jsonplaceholder.typicode.com/posts");

@@ -1,4 +1,4 @@
-package library.entitis.user;
+package library.entities.user;
 
 public class User {
     private Long id;
