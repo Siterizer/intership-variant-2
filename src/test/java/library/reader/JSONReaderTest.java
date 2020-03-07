@@ -19,7 +19,7 @@ public class JSONReaderTest {
     @BeforeClass
     public static void readEntities() {
         JSONReader reader = new JSONReader();
-        //There should be test data here
+        //There should be test data
         users = reader.readUsersFrom("https://jsonplaceholder.typicode.com/users");
         posts = reader.readPostsFrom("https://jsonplaceholder.typicode.com/posts");
     }

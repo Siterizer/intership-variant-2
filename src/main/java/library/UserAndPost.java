@@ -5,6 +5,7 @@ import library.reader.JSONReader;
 import library.entities.user.Geo;
 import library.entities.user.User;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,12 +23,17 @@ public class UserAndPost {
         this.users = jsonReader.readUsersFrom(usersURL);
         this.posts = jsonReader.readPostsFrom(postsURL);
     }
+    public UserAndPost(){
+        JSONReader jsonReader = new JSONReader();
+        this.users = new ArrayList<>();
+        this.posts = new ArrayList<>();
+    }
 
     // Second task:
     // "policzy ile postów napisali userzy i zwróci listę
     // stringów w postaci “user_name napisał(a) count postów"
-    public String countUserPosts(){
-        String result = "";
+    public List<String> countUserPosts(){
+        List<String> result = new ArrayList<>();
         for(User user: users){
             int count =0;
             for(Post post: posts){
@@ -35,19 +41,19 @@ public class UserAndPost {
                     count ++;
                 }
             }
-            result = result.concat(user.getName() + " napisał(a) " + count + " postów" + "\n");
+            result.add(user.getName() + " napisał(a) " + count + " postów");
         }
         return result;
     }
     // Third task:
     // "sprawdzi czy tytuły postów są unikalne i zwróci listę tytułów które nie są."
-    public String returnDuplicatePostTitles(){
+    public List<String> returnDuplicatePostTitles(){
         Set<String> foundDuplicateTitles = new HashSet<>();
-        String result = "";
+        List<String> result = new ArrayList<>();
         for (Post post : posts) {
             String title = post.getTitle();
             if(foundDuplicateTitles.contains(title)){
-                result = result.concat(title + "\n");
+                result.add(title);
             }
             foundDuplicateTitles.add(title);
         }
@@ -56,12 +62,12 @@ public class UserAndPost {
 
     //Fourth task:
     // "dla każdego użytkownika znajdzie innego użytkownika, który mieszka najbliżej niego"
-    public String  findTheClosestUserForAllUsers(){
-        String result = "";
+    public List<String>  findTheClosestUserForAllUsers(){
+        List<String> result = new ArrayList<>();
         for(User user : users){
             User theClosestUser = findTheClosest(user);
-            result = result.concat("The closest resident User with id: (id) = " + user.getId() +
-                    " is User with id: (id) = " + theClosestUser.getId() + "\n");
+            result.add("The closest resident User with id: (id) = " + user.getId() +
+                    " is User with id: (id) = " + theClosestUser.getId());
         }
         return result;
     }

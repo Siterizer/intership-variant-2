@@ -37,7 +37,7 @@ public class UserAndPostTest {
 
     @Test
     public void countUserPosts1() {
-        assertEquals("", userAndPost.countUserPosts());
+        assertEquals(0, userAndPost.countUserPosts().size());
     }
     @Test
     public void countUserPosts2() {
@@ -47,7 +47,7 @@ public class UserAndPostTest {
         Post post2 = new Post();post2.setUserId(Long.parseLong("1"));
         Post post3 = new Post();post3.setUserId(Long.parseLong("1"));
         posts.addAll(Arrays.asList(post1, post2, post3));
-        assertEquals("Name" + " napisał(a) " + 3 + " postów" + "\n", userAndPost.countUserPosts());
+        assertEquals("Name" + " napisał(a) " + 3 + " postów", userAndPost.countUserPosts().get(0));
     }
     @Test
     public void countUserPosts3() {
@@ -57,12 +57,12 @@ public class UserAndPostTest {
         Post post2 = new Post();post2.setUserId(Long.parseLong("2"));
         Post post3 = new Post();post3.setUserId(Long.parseLong("3"));
         posts.addAll(Arrays.asList(post1, post2, post3));
-        assertEquals("Name" + " napisał(a) " + 1 + " postów" + "\n", userAndPost.countUserPosts());
+        assertEquals("Name" + " napisał(a) " + 1 + " postów", userAndPost.countUserPosts().get(0));
     }
 
     @Test
     public void returnDuplicatePostTitles1() {
-        assertEquals("", userAndPost.returnDuplicatePostTitles());
+        assertEquals(0, userAndPost.returnDuplicatePostTitles().size());
     }
 
     @Test
@@ -71,7 +71,7 @@ public class UserAndPostTest {
         Post post2 = new Post();post2.setTitle("2");
         Post post3 = new Post();post3.setTitle("3");
         posts.addAll(Arrays.asList(post1, post2, post3));
-        assertEquals("", userAndPost.returnDuplicatePostTitles());
+        assertEquals(0, userAndPost.returnDuplicatePostTitles().size());
     }
 
     @Test
@@ -80,12 +80,12 @@ public class UserAndPostTest {
         Post post2 = new Post();post2.setTitle("1");
         Post post3 = new Post();post3.setTitle("2");
         posts.addAll(Arrays.asList(post1, post2, post3));
-        assertEquals("1" + "\n", userAndPost.returnDuplicatePostTitles());
+        assertEquals("1", userAndPost.returnDuplicatePostTitles().get(0));
     }
 
     @Test
     public void findTheClosestUserForAllUsers1() {
-        assertEquals("", userAndPost.findTheClosestUserForAllUsers());
+        assertEquals(0, userAndPost.findTheClosestUserForAllUsers().size());
     }
 
     @Test
@@ -100,9 +100,12 @@ public class UserAndPostTest {
         User user2 = new User(); user2.setId(Long.parseLong("2"));user2.setAddress(address2);
         User user3 = new User(); user3.setId(Long.parseLong("3"));user3.setAddress(address3);
         users.addAll(Arrays.asList(user1, user2, user3));
-        assertEquals("The closest resident User with id: (id) = " + 1 + " is User with id: (id) = " + 2 + "\n" +
-                "The closest resident User with id: (id) = " + 2 + " is User with id: (id) = " + 1 + "\n" +
-                "The closest resident User with id: (id) = " + 3 + " is User with id: (id) = " + 1 + "\n",
-                userAndPost.findTheClosestUserForAllUsers());
+        List<String> results = userAndPost.findTheClosestUserForAllUsers();
+        assertEquals("The closest resident User with id: (id) = " + 1 + " is User with id: (id) = " + 2,
+                results.get(0));
+        assertEquals("The closest resident User with id: (id) = " + 2 + " is User with id: (id) = " + 1,
+                results.get(1));
+        assertEquals("The closest resident User with id: (id) = " + 3 + " is User with id: (id) = " + 1,
+                results.get(2));
     }
 }
