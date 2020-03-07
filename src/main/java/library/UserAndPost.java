@@ -5,10 +5,8 @@ import library.reader.JSONReader;
 import library.entities.user.Geo;
 import library.entities.user.User;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class UserAndPost {
     private List<User> users;
@@ -49,15 +47,11 @@ public class UserAndPost {
     // "sprawdzi czy tytuły postów są unikalne i zwróci listę tytułów które nie są."
     public List<String> returnDuplicatePostTitles(){
         Set<String> foundDuplicateTitles = new HashSet<>();
-        List<String> result = new ArrayList<>();
-        for (Post post : posts) {
-            String title = post.getTitle();
-            if(foundDuplicateTitles.contains(title)){
-                result.add(title);
-            }
-            foundDuplicateTitles.add(title);
-        }
-        return result;
+
+        return posts.stream()
+                .filter(post -> !foundDuplicateTitles.add(post.getTitle()))
+                .map(Post::getTitle)
+                .collect(Collectors.toList());
     }
 
     //Fourth task:
