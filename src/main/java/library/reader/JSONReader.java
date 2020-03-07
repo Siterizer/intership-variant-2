@@ -20,6 +20,7 @@ public class JSONReader implements UserAndPostReader {
 
     @Override
     public List<User> readUsersFrom(String URL) {
+        checkURL(URL);
         String string = restTemplate.getForObject(URL, String.class);
         User[] usersArray = gson.fromJson(string, User[].class);
         return Arrays.asList(usersArray);
@@ -27,8 +28,15 @@ public class JSONReader implements UserAndPostReader {
 
     @Override
     public List<Post> readPostsFrom(String URL) {
+        checkURL(URL);
         String string = restTemplate.getForObject(URL, String.class);
         Post[] postsArray = gson.fromJson(string, Post[].class);
         return Arrays.asList(postsArray);
+    }
+
+    private void checkURL(String URL) {
+        if(URL.equals("")){
+            throw new IllegalArgumentException("URL can't be empty");
+        }
     }
 }

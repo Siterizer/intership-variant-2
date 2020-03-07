@@ -19,8 +19,21 @@ public class JSONReaderTest {
     @BeforeClass
     public static void readEntities() {
         JSONReader reader = new JSONReader();
+        //There should be test data here
         users = reader.readUsersFrom("https://jsonplaceholder.typicode.com/users");
         posts = reader.readPostsFrom("https://jsonplaceholder.typicode.com/posts");
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void illegalULR1(){
+        JSONReader jsonReader = new JSONReader();
+        jsonReader.readUsersFrom("");
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void illegalULR2(){
+        JSONReader jsonReader = new JSONReader();
+        jsonReader.readUsersFrom("");
     }
 
     @Test

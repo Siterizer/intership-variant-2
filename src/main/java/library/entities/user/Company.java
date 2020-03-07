@@ -6,7 +6,6 @@ public class Company {
     private String bs;
 
     // GETTERS & SETTERS //
-
     public String getName() {
         return name;
     }
@@ -30,7 +29,6 @@ public class Company {
     public void setBs(String bs) {
         this.bs = bs;
     }
-
     // GETTERS & SETTERS //
 
     @Override

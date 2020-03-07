@@ -5,7 +5,6 @@ public class Geo {
     private String lng;
 
     // GETTERS & SETTERS //
-
     public String getLat() {
         return lat;
     }

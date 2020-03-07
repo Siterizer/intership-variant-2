@@ -13,20 +13,14 @@ public class UserAndPost {
     private List<User> users;
     private List<Post> posts;
 
-    // Constructors are the solution to the first task //
+    // Constructor is the solution to the first task //
     //" pobierze dane o postach z https://jsonplaceholder.typicode.com/posts i połączy je z danymi o
     //userach https://jsonplaceholder.typicode.com/users"
 
-    public UserAndPost(String userURL, String postURL){
+    public UserAndPost(String usersURL, String postsURL){
         JSONReader jsonReader = new JSONReader();
-        this.users = jsonReader.readUsersFrom(userURL);
-        this.posts = jsonReader.readPostsFrom(postURL);
-    }
-
-    public UserAndPost(){
-        JSONReader jsonReader = new JSONReader();
-        this.users = jsonReader.readUsersFrom("https://jsonplaceholder.typicode.com/users");
-        this.posts = jsonReader.readPostsFrom("https://jsonplaceholder.typicode.com/posts");
+        this.users = jsonReader.readUsersFrom(usersURL);
+        this.posts = jsonReader.readPostsFrom(postsURL);
     }
 
     // Second task:
