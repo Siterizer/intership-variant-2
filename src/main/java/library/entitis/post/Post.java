@@ -1,4 +1,4 @@
-package main.entitis.post;
+package library.entitis.post;
 
 public class Post {
     private Long id;

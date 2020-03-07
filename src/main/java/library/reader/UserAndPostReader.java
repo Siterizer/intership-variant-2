@@ -1,7 +1,7 @@
-package main.reader;
+package library.reader;
 
-import main.entitis.post.Post;
-import main.entitis.user.User;
+import library.entitis.post.Post;
+import library.entitis.user.User;
 
 import java.util.List;
 

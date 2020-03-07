@@ -1,4 +1,4 @@
-import main.UserAndPost;
+import library.UserAndPost;
 
 public class Task {
 

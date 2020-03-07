@@ -1,9 +1,9 @@
-package main.entitis.user;
+package library.entitis.user;
 
 public class Company {
-    public String name;
-    public String catchPhrase;
-    public String bs;
+    private String name;
+    private String catchPhrase;
+    private String bs;
 
     // GETTERS & SETTERS //
 
@@ -30,6 +30,7 @@ public class Company {
     public void setBs(String bs) {
         this.bs = bs;
     }
+
     // GETTERS & SETTERS //
 
     @Override

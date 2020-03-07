@@ -1,9 +1,9 @@
-package main;
+package library;
 
-import main.entitis.post.Post;
-import main.reader.JSONReader;
-import main.entitis.user.Geo;
-import main.entitis.user.User;
+import library.entitis.post.Post;
+import library.reader.JSONReader;
+import library.entitis.user.Geo;
+import library.entitis.user.User;
 
 import java.util.HashSet;
 import java.util.List;
