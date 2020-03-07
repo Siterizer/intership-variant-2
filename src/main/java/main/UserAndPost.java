@@ -1,10 +1,9 @@
-package main.service;
+package main;
 
-import main.entites.post.Post;
-import main.entites.user.User;
-import main.service.FindTheClosestUserAlgorithm;
-import main.service.PostService;
-import main.service.UserService;
+import main.entitis.post.Post;
+import main.reader.JSONReader;
+import main.entitis.user.Geo;
+import main.entitis.user.User;
 
 import java.util.HashSet;
 import java.util.List;
@@ -19,13 +18,15 @@ public class UserAndPost {
     //userach https://jsonplaceholder.typicode.com/users"
 
     public UserAndPost(String userURL, String postURL){
-        this.users = UserService.loadUsersFrom(userURL);
-        this.posts = PostService.loadPostsFrom(postURL);
+        JSONReader jsonReader = new JSONReader();
+        this.users = jsonReader.readUsersFrom(userURL);
+        this.posts = jsonReader.readPostsFrom(postURL);
     }
 
     public UserAndPost(){
-        this.users = UserService.loadUsersFrom("https://jsonplaceholder.typicode.com/users");
-        this.posts = PostService.loadPostsFrom("https://jsonplaceholder.typicode.com/posts");
+        JSONReader jsonReader = new JSONReader();
+        this.users = jsonReader.readUsersFrom("https://jsonplaceholder.typicode.com/users");
+        this.posts = jsonReader.readPostsFrom("https://jsonplaceholder.typicode.com/posts");
     }
 
     // Second task:
@@ -63,13 +64,32 @@ public class UserAndPost {
     // "dla każdego użytkownika znajdzie innego użytkownika, który mieszka najbliżej niego"
     public String  findTheClosestUserForAllUsers(){
         String result = "";
-        FindTheClosestUserAlgorithm findTheClosestUserAlgorithm = new FindTheClosestUserAlgorithm(users);
         for(User user : users){
-            User theClosestUser = findTheClosestUserAlgorithm.findTheClosest(user);
+            User theClosestUser = findTheClosest(user);
             result = result.concat("The closest resident User with id: (id) = " + user.getId() +
                     " is User with id: (id) = " + theClosestUser.getId() + "\n");
         }
         return result;
+    }
+
+    private User findTheClosest(User user){
+        double max = Double.MAX_VALUE;
+        User result = new User();
+        for(User arrayUser : users){
+            if(user.equals(arrayUser)){
+                continue;
+            }
+            double distanceBetweenUsers = calculateDistance(user.getAddress().getGeo(), arrayUser.getAddress().getGeo());
+            if(distanceBetweenUsers < max){
+                max = distanceBetweenUsers;
+                result = arrayUser;
+            }
+        }
+        return result;
+    }
+    private double calculateDistance(Geo geo1, Geo geo2){
+        return Math.hypot(Double.parseDouble(geo1.getLat()) - Double.parseDouble(geo2.getLat()),
+                Double.parseDouble(geo1.getLng()) - Double.parseDouble(geo2.getLng()));
     }
 
     // GETTERS //

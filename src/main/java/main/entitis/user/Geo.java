@@ -1,4 +1,4 @@
-package main.entites.user;
+package main.entitis.user;
 
 public class Geo {
     private String lat;

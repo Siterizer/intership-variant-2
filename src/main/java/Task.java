@@ -1,4 +1,4 @@
-import main.service.UserAndPost;
+import main.UserAndPost;
 
 public class Task {
 
