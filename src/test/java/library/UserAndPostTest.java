@@ -4,6 +4,7 @@ import library.entities.post.Post;
 import library.entities.user.Address;
 import library.entities.user.Geo;
 import library.entities.user.User;
+import library.reader.JSONReader;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -33,6 +34,11 @@ public class UserAndPostTest {
     public void clearLists(){
         users.clear();
         posts.clear();
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void illegalULR(){
+        UserAndPost userAndPost = new UserAndPost("", "");
     }
 
     @Test

@@ -24,18 +24,6 @@ public class JSONReaderTest {
         posts = reader.readPostsFrom("https://jsonplaceholder.typicode.com/posts");
     }
 
-    @Test(expected=IllegalArgumentException.class)
-    public void illegalULR1(){
-        JSONReader jsonReader = new JSONReader();
-        jsonReader.readUsersFrom("");
-    }
-
-    @Test(expected=IllegalArgumentException.class)
-    public void illegalULR2(){
-        JSONReader jsonReader = new JSONReader();
-        jsonReader.readUsersFrom("");
-    }
-
     @Test
     public void CheckPresenceOfObjects(){
         for(User user : users){

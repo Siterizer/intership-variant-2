@@ -4,6 +4,7 @@ import library.entities.post.Post;
 import library.reader.JSONReader;
 import library.entities.user.Geo;
 import library.entities.user.User;
+import library.reader.UserAndPostReader;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -17,12 +18,13 @@ public class UserAndPost {
     //userach https://jsonplaceholder.typicode.com/users"
 
     public UserAndPost(String usersURL, String postsURL){
-        JSONReader jsonReader = new JSONReader();
-        this.users = jsonReader.readUsersFrom(usersURL);
-        this.posts = jsonReader.readPostsFrom(postsURL);
+        checkURL(usersURL);
+        checkURL(postsURL);
+        UserAndPostReader reader = new JSONReader();
+        this.users = reader.readUsersFrom(usersURL);
+        this.posts = reader.readPostsFrom(postsURL);
     }
     public UserAndPost(){
-        JSONReader jsonReader = new JSONReader();
         this.users = new ArrayList<>();
         this.posts = new ArrayList<>();
     }
@@ -84,6 +86,12 @@ public class UserAndPost {
     private double calculateDistance(Geo geo1, Geo geo2){
         return Math.hypot(Double.parseDouble(geo1.getLat()) - Double.parseDouble(geo2.getLat()),
                 Double.parseDouble(geo1.getLng()) - Double.parseDouble(geo2.getLng()));
+    }
+
+    private void checkURL(String URL) {
+        if(URL.equals("")){
+            throw new IllegalArgumentException("URL can't be empty");
+        }
     }
 
     // GETTERS  & SETTERS//
