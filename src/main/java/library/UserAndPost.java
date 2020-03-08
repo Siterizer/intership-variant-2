@@ -33,17 +33,15 @@ public class UserAndPost {
     // "policzy ile postów napisali userzy i zwróci listę
     // stringów w postaci “user_name napisał(a) count postów"
     public List<String> countUserPosts(){
-        List<String> result = new ArrayList<>();
-        for(User user: users){
-            int count =0;
-            for(Post post: posts){
-                if(user.getId().equals(post.getUserId())){
-                    count ++;
-                }
-            }
-            result.add(user.getName() + " napisał(a) " + count + " postów");
-        }
-        return result;
+        return(users.stream()
+                .map(user ->
+                    {long count = posts
+                            .stream()
+                            .filter(post -> post.getUserId().equals(user.getId()))
+                            .count();
+                    return user.getName() + " napisał(a) " + count + " postów";
+                })
+                .collect(Collectors.toList()));
     }
     // Third task:
     // "sprawdzi czy tytuły postów są unikalne i zwróci listę tytułów które nie są."
@@ -59,13 +57,10 @@ public class UserAndPost {
     //Fourth task:
     // "dla każdego użytkownika znajdzie innego użytkownika, który mieszka najbliżej niego"
     public List<String>  findTheClosestUserForAllUsers(){
-        List<String> result = new ArrayList<>();
-        for(User user : users){
-            User theClosestUser = findTheClosest(user);
-            result.add("The closest resident User with id: (id) = " + user.getId() +
-                    " is User with id: (id) = " + theClosestUser.getId());
-        }
-        return result;
+        return (users.stream()
+                .map(s -> "The closest resident User with id: (id) = " + s.getId() +
+                        " is User with id: (id) = " + findTheClosest(s).getId())
+                .collect(Collectors.toList()));
     }
 
     private User findTheClosest(User user){
